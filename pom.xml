@@ -9,7 +9,7 @@
 	<packaging>jar</packaging>
 
 	<name>anvisa-medicament</name>
-	<description>API de acesso a base de dados da Anvisa</description>
+	<description>API de acesso à base de dados da Anvisa</description>
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>
@@ -72,6 +72,17 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+			<plugin>
+				<groupId>com.heroku.sdk</groupId>
+				<artifactId>heroku-maven-plugin</artifactId>
+				<version>2.0.3</version>
+				<configuration>
+					<appName>${heroku.appName}</appName>
+					<processTypes>
+					<web>java $JAVA_OPTS -cp target/classes:target/dependency/* Main</web>
+					</processTypes>
+				</configuration>
 			</plugin>
 		</plugins>  
 	</build>
